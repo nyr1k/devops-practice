@@ -1,0 +1,21 @@
+{
+  "name": "node-postgres-app",
+  "version": "1.0.0",
+  "description": "Simple Node.js + PostgreSQL web app for DevOps practice",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["node", "express", "postgres", "devops"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

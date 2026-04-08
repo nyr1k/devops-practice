@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test App</title>
+</head>
+<body>
+  <h1>Users</h1>
+
+  <ul id="users"></ul>
+
+  <input id="name" placeholder="Enter name">
+  <button onclick="addUser()">Add</button>
+
+  <script>
+    async function loadUsers() {
+      const res = await fetch('/api/users');
+      const users = await res.json();
+
+      const list = document.getElementById('users');
+      list.innerHTML = '';
+
+      users.forEach(u => {
+        const li = document.createElement('li');
+        li.textContent = u.name;
+        list.appendChild(li);
+      });
+    }
+
+    async function addUser() {
+      const name = document.getElementById('name').value;
+
+      await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+      });
+
+      loadUsers();
+    }
+
+    loadUsers();
+  </script>
+</body>
+</html>
